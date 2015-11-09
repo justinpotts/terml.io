@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action="signin" method=post>
+    <h2>Sign In</h2>
+    {% if error %}<p class="alert alert-danger"><strong>Error:</strong> {{ error }}{% endif %}
+    {% if signedup %}<p class="alert alert-success">You have successfully signed up. Please sign in to continue.</p>{% endif %}
+    <dl>
+    <dt id="formfield">Email:
+    <dd><input type=text autofocus="autofocus" name=email id="signform">
+    <dt id="formfield">Password:
+    <dd><input type=password name=password id="signform">
+    <dd><input class=btn type=submit value="Sign in" id="formsubmit">
+    </dl>
+  </form>
+    <p><a href="forgotpassword">Forgot password</a> or <a href="signup">sign up</a>.</p>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if message %}<p class="alert alert-success">{{ message }}{% endif %}
+      <div class="jumbotron" id="jumbo">
+        <h1><b>It's here.</b></h1>
+        <p class="lead">Give us a set of terms, and we'll give you definitions.</p>
+        {% if not session.logged_in %}
+            <p class="lead">Sign up today for free, and start creating sets!</p>
+            <a class="btn btn-large btn-success" href="/signup">Sign up today!</a>
+            <a class="btn btn-large btn-info" href="/learnmore">Learn more</a>
+        {% else %}
+            <a class="btn btn-large btn-success" href="/create">Create a set</a>
+            <a class="btn btn-large btn-info" href="/review">Review sets</a>
+        {% endif %}
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <div class="col-xs-4 col-md-4">
+          <h2>Affordable</h2>
+          <p>Terml.io is <b>free</b> for basic functions. Additional features are available when you purchase Premium.</p>
+        </div>
+        <div class="col-xs-4 col-md-4">
+          <h2>Efficient</h2>
+          <p>Substantially reduces the time you search for definitions. Now view them instantly, saving you hours.</p>
+       </div>
+        <div class="col-xs-4 col-md-4">
+          <h2>Intuitive</h2>
+          <p>Copy and paste your terms from your list. View definitions. It's that simple.</p>
+        </div>
+      </div>
+{% endblock %}

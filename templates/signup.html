@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action="signup" method=post>
+    <h2>Sign Up</h2>
+    {% for message in form.email.errors %}
+    <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+    {% for message in form.password.errors %}
+    <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+    {% for message in form.confirm.errors %}
+    <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+    {% for message in form.accept_tos.errors %}
+    <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    {{ form.hidden_tag() }}
+
+    <div id="signform">{{ form.email.label }}:</div>
+    <div id="formfield">{{ form.email }}</div>
+
+    <div id="signform">{{ form.password.label }}:</div>
+    <div id="formfield">{{ form.password }}</div>
+
+    <div id="signform">{{ form.confirm.label }}:</div>
+    <div id="formfield">{{ form.confirm }}</div>
+
+    <p>I accept the <a href=termsofservice>Terms of Service</a>   {{ form.accept_tos }}</p>
+
+    <p>{{ form.submit }}</p>
+  </form>
+  <p>Or <a href="signin">Sign In</a>.</p>
+{% endblock %}

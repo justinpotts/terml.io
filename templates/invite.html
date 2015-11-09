@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h2>Request an invite</h2>
+<p>To ensure top quality, Terml.io is implementing an invite feature
+   in order to ensure the product is able to function as it should and provide
+   an enjoyable and easy to use experience. To request an invite, fill out the
+   form below and wait to be contacted through email.</p>
+  {% for message in form.name.errors %}
+    <div class="alert alert-error">{{ message }}</div>
+  {% endfor %}
+  {% for message in form.email.errors %}
+    <div class="alert alert-error">{{ message }}</div>
+  {% endfor %}
+  {% for message in form.school.errors %}
+    <div class="alert alert-error">{{ message }}</div>
+  {% endfor %}
+  {% if form.validate() == True %}
+    <div class="alert alert-success">Your request has been submitted.</div>
+  {% endif %}
+
+  <form action="invite" method=post id="formfield">
+    {{ form.hidden_tag() }}
+
+    <div id="signform">{{ form.name.label }}:</div>
+    <div id="formfield">{{ form.name }}</div>
+
+    <div id="signform">{{ form.email.label }}:</div>
+    <div id="formfield">{{ form.email }}</div>
+
+    <div id="signform">{{ form.school.label }}:</div>
+    <div id="formfield">{{ form.school }}</div>
+
+    <p><div class="btn-large">{{ form.submit }}</div></p>
+  </form>
+{% endblock %}

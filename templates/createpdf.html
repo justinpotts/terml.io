@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body%}
+<h2>Definitions</h2>
+<div id='terms'>
+<h3>{{ set.title }}</h3>
+{% for word in words %}
+  <p><b>{{ word }}</b>: {{ definitions[word] }}</p>
+{% endfor %}
+</div>
+<form action="/review">
+  <input type="submit" class="btn" id="formsubmit" value="Review Sets">
+</form>
+<script src="{{ url_for('static', filename='jspdf.min.js') }}"></script>
+<script>
+$(function () {
+
+  $( document ).ready(
+    function () {
+      var elementHandler = {
+      };
+      var doc = new jsPDF();
+      var source = document.getElementById("terms");
+      doc.fromHTML(
+        source,
+        15,
+        15,
+      {
+        'width': 180,'elementHandlers': elementHandler
+      });
+
+      doc.output("dataurlnewwindow");
+    });
+  });
+</script>
+{% endblock %}

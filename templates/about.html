@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block body %}
+  <style>
+  .img-circular-justin{
+    width: 100px;
+    height: 100px;
+    background-image: url("{{ url_for("static", filename="justinpotts-profile.jpg") }}");
+    background-size: cover;
+    display: block;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+  }
+  .img-circular-jeffrey{
+    width: 100px;
+    height: 100px;
+    background-image: url("{{ url_for("static", filename="jeffreywang-profile.jpg") }}");
+    background-size: cover;
+    display: block;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+  }
+  .img-circular-mywikis{
+    width: 100px;
+    height: 100px;
+    background-image: url("{{ url_for("static", filename="mywikis-profile.png") }}");
+    background-size: cover;
+    display: block;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+  }
+  </style>
+  <h2>Meet the Team</h2>
+  <br>
+  <div class="row" align=center>
+    <div class="col-xs-4 col-md-4">
+      <a class="img-circular-justin" href="https://twitter.com/PottsJustin" data-toggle="popover" data-placement="bottom" tabindex="0" data-trigger="hover" data-html="true" data-content="Justin works on developing all aspects of Terml.io, as well as working on product development and the business side of things."></a>
+      <h3>Justin Potts</h3>
+      <h4>Founder and CEO</h4>
+    </div>
+    <div class="col-xs-4 col-md-4">
+      <a class="img-circular-jeffrey" href="https://twitter.com/jeffwang16" data-toggle="popover" data-placement="bottom" tabindex="0" data-trigger="hover" data-html="true" data-content="Jeffrey Wang helps code parts of Terml.io's user interface part-time, and is also the CEO of <a href='https://mywikis.com'>MyWikis</a>."></a>
+      <h3>Jeffrey Wang</h3>
+      <h4>Sponsor and Developer</h4>
+    </div>
+    <div class="col-xs-4 col-md-4">
+      <a class="img-circular-mywikis" href="http://blogger.mywikis.com/2015/05/free-hosting-for-startups.html" data-toggle="popover" data-placement="bottom" tabindex="0" data-trigger="hover" data-html="true" data-content="Terml.io is hosted through MyWikis' startup program. You can read more about this by clicking on the logo>."></a>
+      <h3>MyWikis</h3>
+      <h4>Sponsor</h4>
+    </div>
+  </div>
+<br>
+{% endblock %}

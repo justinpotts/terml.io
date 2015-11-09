@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Account</h2>
+<p class="lead">{{ session['email'] }}</p>
+<hr>
+{% if message %}<p class="alert alert-success">{{ message }}{% endif %}
+{% if error %}<p class="alert alert-danger"><strong>Error:</strong> {{ error }}{% endif %}
+<form action="/changeemail" method=post>
+  <dl>
+    <p><dd><input type=text autofocus="autofocus" name=email id="signform" placeholder="{{ session['email'] }}"></p>
+    <dd><input class=btn type=submit value="Change Email" id="formsubmit">
+  </dl>
+</form>
+<form action="/changepassword" method=post>
+    <dl>
+      <p><dd><input type=password name=current id="signform" placeholder="Current password"></p>
+      <p><dd><input type=password name=new id="signform" placeholder="New password"></p>
+      <p><dd><input type=password name=confirm id="signform" placeholder="Confirm password"></p>
+      <dd><input class=btn type=submit value="Change password" id="formsubmit">
+    </dl>
+</form>
+{% endblock %}

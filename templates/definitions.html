@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body%}
+<h2>Definitions</h2>
+<div id='terms'>
+<h3>{{ set.title }}</h3>
+{% for word in words %}
+  <p><b>{{ word }}</b>: {{ definitions[word] }}</p>
+{% endfor %}
+</div>
+<form action="/review">
+  <input type="submit" class="btn" id="formsubmit" value="Review Sets">
+</form>
+<br>
+<small>Definitions are from Wikipedia and used under the CC-BY-SA 3.0 license. View the license that Wikipedia uses <a href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">here</a>. The Terml.io website and code is &copy; 2015 Terml.io, all rights reserved.</a></small>
+{% endblock %}

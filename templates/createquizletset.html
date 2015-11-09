@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Create Quizlet Set</h2>
+<h3>Step One</h3>
+<p>Login to Quizlet and click "Create Set."
+<h3>Step Two</h3>
+<p>Click the import button (on the right side of the page, just below the set title).</p>
+<h3>Step Three</h3>
+<p>Paste the following text into the Quizlet import text area:</p>
+<textarea rows="10" cols="50" onclick="this.focus();this.select()" readonly="readonly">
+{{ import_code }}
+</textarea>
+{% endblock %}

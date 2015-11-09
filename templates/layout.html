@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Terml.io</title>
+    <meta name="description" content="Put in terms, we define them for you!">
+    <meta name="author" content="">
+
+    <link rel="icon"
+          type="image/png"
+          href="../static/termlioicon.png">
+
+    <!-- Le styles -->
+    <link href="{{ url_for('static', filename='bootstrap.css') }}" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 0px 0;
+        margin-bottom: 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+      #jumbo {
+        padding: 10px;
+        margin-bottom: 50px;
+      }
+
+      #formsubmit {
+        margin-top: 10px;
+        padding: 5px;
+      }
+
+      #formfield {
+        margin-top: 3px;
+        margin-bottom: 3px;
+        padding: 5px;
+      }
+      .setWell {
+        text-align: justify;
+      }
+      .setWell:after{
+        display: inline-block;
+        width: 100%;
+        height: 0;
+        font-size:0;
+        line-height:0;
+      }
+
+      .setInfo {
+        display: inline-block;
+        margin-top: 0.321em;
+      }
+
+      .setTasks {
+        display: inline-block;
+        vertical-align: baseline;
+      }
+    </style>
+    <link href="{{ url_for('static', filename='bootstrap-responsive.css') }}" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-63538443-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+
+$(document).ready(function(){
+
+  $('[data-toggle="popover"]').popover();
+
+});
+
+</script>
+  </head>
+  <body>
+
+<br>
+    <div class="container-narrow">
+      <div class="masthead">
+        <img style="max-width:150px; margin-top: -7px;"
+             src="{{ url_for('static', filename='termlio-logo.png') }}">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="/">Home</a></li>
+          {% if session.logged_in %}
+            <li class="dropdown">
+              <a href="" data-toggle="dropdown" class="dropdown-toggle">Sets<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/create">Create set</a></li>
+                  <li><a href="/review">Review sets</a></li>
+                </ul>
+            </li>
+            <li><a href="/help">Help</a></li>
+            <li><a href="/about">About</a></li>
+            <li class="dropdown">
+              <a href="" data-toggle="dropdown" class="dropdown-toggle">{{ session['username'] }}<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/account"><span class="glyphicon glyphicon-cog"></span>&nbsp;&nbsp;&nbsp;Account</a></li>
+                <li><a href="/signout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;&nbsp;Sign out</a></li>
+              </ul>
+            </li>
+          {% else %}
+            <li><a href="/learnmore">Learn more</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="#" data-toggle="popover" tabindex="0" data-placement="bottom" data-html="true" data-content="<form action='signin' method=post>
+              <h2>Sign In</h2>
+              {% if error %}<p class='alert alert-danger'><strong>Error:</strong> {{ error }}{% endif %}
+                {% if signedup %}<p class='alert alert-success'>You have successfully signed up. Please sign in to continue.</p>{% endif %}
+                <dl>
+                  <dt id='formfield'>Email:
+                    <dd><input type=text autofocus='autofocus' name=email id='signform'>
+                      <dt id='formfield'>Password:
+                        <dd><input type=password name=password id='signform'>
+                          <dd><input class=btn type=submit value='Sign in' id='formsubmit'>
+                          </dl>
+                        </form> <p>Or <a href='signup'>Sign Up</a>.</p>">Sign In</a>
+          {% endif %}
+            </ul>
+        </li>
+      </div>
+      <hr>
+      {% block body %}
+
+      {% endblock %}
+      <hr>
+    </div>
+    <div class="footer">
+      <center>
+        <p>
+          <a href="/about">Team</a>&nbsp;&nbsp;&nbsp;
+          <a href="mailto:support@terml.io">Contact</a>&nbsp;&nbsp;&nbsp;
+          <a href="/termsofservice">Terms of Service</a>
+        </p>
+        <p>Follow <a href="http://twitter.com/termlio">@Termlio</a> on Twitter.<p>
+          &copy; 2015 Terml.io
+        </center>
+      </div>
+  </body>
+</html>

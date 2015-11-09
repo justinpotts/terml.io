@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body%}
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+<h2>Review</h2>
+{% if message %}<p class="alert alert-success">{{ message }}</p>
+{% endif %}
+{% for set in sets %}
+<div class="well well-sm setWell">
+  <span class="setInfo">
+  <b><a href="/definitions/{{ set.id }}" style="color:#000;">{{ set.title }}</a></b>&nbsp;
+    <small style="color:#808080">{{ length_of_sets[set] }}&nbsp;terms</small>
+  </span>&nbsp;&nbsp;&nbsp;
+  <span class="setTasks pull-right">
+    <a class="btn btn-default" href="/createpdf/{{ set.id }}" data-toggle="tooltip" title="Download PDF">
+      <span class="glyphicon glyphicon-save"></span>
+    </a>&nbsp;
+    <a href="/createquizletset/{{ set.id }}" data-toggle="tooltip" title="Create Quizlet Set">
+      <img style="border-radius:4px;" src="{{ url_for('static', filename='quizletlogo.png') }}" width="32" height="32" /></a>&nbsp;
+    <a class="btn btn-danger" href="/deleteset/{{ set.id }}" data-toggle="tooltip" title="Delete Set">
+      <span class="glyphicon glyphicon-remove"></span>
+    </a>
+  </span>
+</div>
+{% endfor %}
+{% if sets_length == 0 %}
+<p>You have not created any sets! Go to <a href=/create>Create</a> to create a set now!<p>
+{% endif %}
+{% endblock %}
