@@ -1,5 +1,5 @@
 # Set up Terml.io as a local Git repository
-Please note that Terml.io is currently proprietary software and may not be shared, as stated in your NDA terms.
+These instructions have been fined-tuned for OS X. The same commands should probably work for Linux. On Windows, please consider using Cygwin.
 
 ## OS X
 Tested with OS X Yosemite. You will need sudo (administrator) access.
