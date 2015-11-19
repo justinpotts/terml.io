@@ -16,7 +16,7 @@ Tested with OS X Yosemite. You will need sudo (administrator) access.
 
 3. Install Flask and other dependencies.
   ```bash
-  sudo -H pip install freeze flask Flask-Mail Flask-SQLAlchemy Flask-WTF wikipedia stripe pymysql
+  sudo -H pip install -r requirements.txt
   ```
 4. Edit termlio.py and comment out other databases except for the one designated for local instances. It should be SQLite.
 
